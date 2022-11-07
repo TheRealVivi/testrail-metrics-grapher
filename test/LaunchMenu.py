@@ -1,9 +1,11 @@
 '''
 Created on Nov 4, 2022
 
-@author: kodel
+@author: Kyle O'Dell
 '''
 import subprocess
+import plotly.express as px
+import pandas as pd
 
 def MainMenu():
     toolActive = True
@@ -19,19 +21,28 @@ def MainMenu():
         
         if option == '1':
             subprocess.run(["java", "-jar", "../vMetrics.jar", "1"])
+            PieGraphConsolidatedMetrics()
         elif option == '2':
             subprocess.run(["java", "-jar", "../vMetrics.jar", "2"])
         elif option == '3':
             subprocess.run(["java", "-jar", "../vMetrics.jar", "3"])
         elif option == '4':
             toolActive = False
+        else:
+            print("\nInvalid input! Please try again.\n")
             
         print()
         
     print("\nGoodbye\n")
     
+def PieGraphConsolidatedMetrics():
+    df = pd.read_csv('C://Users/kylemolina.s/Documents/consolidatedMetrics.csv')
+    df = df.drop(labels=[7], axis=0,)
+    fig = px.pie(df, values=' Test Count', names='Test Case Status')
+    fig.write_html('test_Figure.html', auto_open=True)
 
 if __name__ == '__main__':
     MainMenu()
+    
     
     
