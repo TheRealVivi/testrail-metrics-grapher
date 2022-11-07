@@ -39,7 +39,7 @@ def PieGraphConsolidatedMetrics():
     df = pd.read_csv('C://Users/kylemolina.s/Documents/consolidatedMetrics.csv')
     df = df.drop(labels=[7], axis=0,)
     fig = px.pie(df, values=' Test Count', names='Test Case Status')
-    fig.write_html('test_Figure.html', auto_open=True)
+    fig.write_html('TestCaseStatus_PieFigure.html', auto_open=True)
 
 if __name__ == '__main__':
     MainMenu()
