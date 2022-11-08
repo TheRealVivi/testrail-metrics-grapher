@@ -4,8 +4,7 @@ Created on Nov 4, 2022
 @author: Kyle O'Dell
 '''
 import subprocess
-import plotly.express as px
-import pandas as pd
+
 
 def MainMenu():
     toolActive = True
@@ -36,6 +35,8 @@ def MainMenu():
     print("\nGoodbye\n")
     
 def PieGraphConsolidatedMetrics():
+    import plotly.express as px
+    import pandas as pd
     df = pd.read_csv('C://Users/kylemolina.s/Documents/consolidatedMetrics.csv')
     df = df.drop(labels=[7], axis=0,)
     fig = px.pie(df, values=' Test Count', names='Test Case Status')
