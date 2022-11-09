@@ -46,10 +46,10 @@ def MainMenu():
 
     if(len(graphs) != 0):
         app.layout = html.Div(children=[
-            html.H1(children='Hello Dash'),
+            html.H1(children='TestRail Metrics'),
 
             html.Div(children='''
-                Dash: A web app framework for your data.
+                Test Suite Test Case Statuses
             '''),
 
 
