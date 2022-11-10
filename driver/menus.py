@@ -30,6 +30,7 @@ def MainMenu():
 
     return figs
 
+# User options for type of desired graph
 def ConsolidatedMetricsGraphOptionsMenu():
     from testRailMetricsGraphingTool import PieGraphConsolidatedMetrics
     from testRailMetricsGraphingTool import BarGraphConsolidatedMetrics

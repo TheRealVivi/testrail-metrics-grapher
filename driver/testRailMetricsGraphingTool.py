@@ -4,6 +4,7 @@ Created on Nov 4, 2022
 @author: kodel
 '''
 
+# Returns bar chart based on provided csv
 def BarGraphConsolidatedMetrics():
     import plotly.express as px
     import pandas as pd
@@ -14,7 +15,7 @@ def BarGraphConsolidatedMetrics():
     
     return fig
 
-# Adds pie chart to subplot
+# Returns pie chart based on provided csv
 def PieGraphConsolidatedMetrics():
     import plotly.express as px
     import pandas as pd
@@ -25,7 +26,7 @@ def PieGraphConsolidatedMetrics():
     
     return fig
 
-
+# If provided figures are not empty, prepares a Dash App and launches it with the provided figures
 def LaunchDashApp(figs):
     if(len(figs) == 0):
         print("No figures generated during run time. Exiting application.")
