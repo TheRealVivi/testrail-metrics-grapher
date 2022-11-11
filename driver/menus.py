@@ -9,12 +9,12 @@ def Login() -> str:
 def MainMenu(domain:str, email:str, password:str):
     import subprocess
 
-    toolActive = True
-    consolidatedMetricsPulledRecently = False
+    toolActive:bool = True
+    consolidatedMetricsPulledRecently:bool = False
 
     figs = []
     while toolActive:
-        option = input("\nWelcome to the TestRail Metrics Generator Tool!\n"
+        option:str = input("\nWelcome to the TestRail Metrics Generator Tool!\n"
                      + "Please select an option:\n"
                      + "1. Provide consolidated section metrics\n"
                      + "2. Provide metrics per section\n"
@@ -24,14 +24,14 @@ def MainMenu(domain:str, email:str, password:str):
         
         if option == '1':
             if not consolidatedMetricsPulledRecently:
-                subprocess.run(["java", "-jar", "../vMetrics.jar", "1", domain, email, password])
+                subprocess.run(["java", "-jar", "../vMetrics.jar", option, domain, email, password])
                 consolidatedMetricsPulledRecently = True
             
             figs.append(ConsolidatedMetricsGraphOptionsMenu())
         elif option == '2':
-            subprocess.run(["java", "-jar", "../vMetrics.jar", "2", domain, email, password])
+            subprocess.run(["java", "-jar", "../vMetrics.jar", option, domain, email, password])
         elif option == '3':
-            subprocess.run(["java", "-jar", "../vMetrics.jar", "3", domain, email, password])
+            subprocess.run(["java", "-jar", "../vMetrics.jar", option, domain, email, password])
         elif option == '4':
             toolActive = False
         else:
@@ -48,7 +48,7 @@ def ConsolidatedMetricsGraphOptionsMenu():
     from testRailMetricsGraphingTool import PieGraphConsolidatedMetrics
     from testRailMetricsGraphingTool import BarGraphConsolidatedMetrics
 
-    option = input("\nSelect chart type to plot metrics:\n"
+    option:str = input("\nSelect chart type to plot metrics:\n"
                  + "1. Pie chart\n"
                  + "2. Bar graph\n"
                  + "Input option >> ")
