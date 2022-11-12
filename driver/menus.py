@@ -1,3 +1,9 @@
+'''
+Created on Nov 4, 2022
+
+@author: Kyle O'Dell
+'''
+
 def Login() -> str:
     import getpass
     print("Please login to TestRail:")

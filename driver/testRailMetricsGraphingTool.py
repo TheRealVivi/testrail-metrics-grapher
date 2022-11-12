@@ -1,7 +1,7 @@
 '''
 Created on Nov 4, 2022
 
-@author: kodel
+@author: Kyle O'Dell
 '''
 
 # Returns bar chart based on provided csv
@@ -31,6 +31,8 @@ def LaunchDashApp(figs):
     if(len(figs) == 0):
         print("No figures generated during run time. Exiting application.")
         return
+
+    print("Creating Dash app...")
 
     from dash import Dash, html, dcc
 
