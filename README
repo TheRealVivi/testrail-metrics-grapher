@@ -1,0 +1,13 @@
+Required dependencies:
+- Python
+  - Pandas
+  - Plotly
+  - Dash
+- Java JDK 17
+  - Environment pathing properly set
+
+
+For Python dependencies, run the following in Command Prompt/Powershell/Terminal:
+pip install pandas
+pip install plotly
+pip install dash
