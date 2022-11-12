@@ -55,4 +55,3 @@ def LaunchDashApp(figs):
     ])
         
     app.run_server(debug=False)
-  

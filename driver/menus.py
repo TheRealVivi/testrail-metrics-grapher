@@ -1,8 +1,9 @@
 def Login() -> str:
+    import getpass
     print("Please login to TestRail:")
     domain:str = input("TestRail domain: ")
     email:str = input("TestRail email: ")
-    password:str = input("TestRail password: ")
+    password:str = getpass.getpass("TestRail password: ")
 
     return (domain, email, password)
 
