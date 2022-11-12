@@ -7,7 +7,7 @@ def Login() -> str:
 
     return (domain, email, password)
 
-def MainMenu(domain:str, email:str, password:str):
+def MainMenu(runningOS:str, domain:str, email:str, password:str):
     import subprocess
 
     toolActive:bool = True
@@ -25,14 +25,14 @@ def MainMenu(domain:str, email:str, password:str):
         
         if option == '1':
             if not consolidatedMetricsPulledRecently:
-                subprocess.run(["java", "-jar", "../vMetrics.jar", option, domain, email, password])
+                subprocess.run(["java", "-jar", "../vMetrics.jar", runningOS, option, domain, email, password])
                 consolidatedMetricsPulledRecently = True
             
             figs.append(ConsolidatedMetricsGraphOptionsMenu())
         elif option == '2':
-            subprocess.run(["java", "-jar", "../vMetrics.jar", option, domain, email, password])
+            subprocess.run(["java", "-jar", "../vMetrics.jar", runningOS, option, domain, email, password])
         elif option == '3':
-            subprocess.run(["java", "-jar", "../vMetrics.jar", option, domain, email, password])
+            subprocess.run(["java", "-jar", "../vMetrics.jar", runningOS, option, domain, email, password])
         elif option == '4':
             toolActive = False
         else:
