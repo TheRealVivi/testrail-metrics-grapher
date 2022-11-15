@@ -9,8 +9,8 @@ from testRailMetricsGraphingTool import LaunchDashApp
 import platform
 
 if __name__ == '__main__':
-    runningOS = platform.system()
+    runningOS: str = platform.system()
     (domain, email, password) = Login()
-    figs = MainMenu(runningOS, domain, email, password)
+    figs: list[object] = MainMenu(runningOS, domain, email, password)
     LaunchDashApp(figs)
     

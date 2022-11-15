@@ -3,31 +3,27 @@ Created on Nov 4, 2022
 
 @author: Kyle O'Dell
 '''
+import plotly.express as px
+import pandas as pd
 
 # Returns bar chart based on provided csv
-def BarGraphConsolidatedMetrics():
-    import plotly.express as px
-    import pandas as pd
-
+def BarGraphConsolidatedMetrics() -> object:
     df = pd.read_csv('../../../Documents/consolidatedMetrics.csv')
     df = df.drop(labels=[7], axis=0,)
-    fig = px.bar(df, x='Test Case Status', y=' Test Count')
+    fig: object = px.bar(df, x='Test Case Status', y=' Test Count')
     
     return fig
 
 # Returns pie chart based on provided csv
-def PieGraphConsolidatedMetrics():
-    import plotly.express as px
-    import pandas as pd
-
+def PieGraphConsolidatedMetrics() -> object:
     df = pd.read_csv('../../../Documents/consolidatedMetrics.csv')
     df = df.drop(labels=[7], axis=0,)
-    fig = px.pie(df, values=' Test Count', names='Test Case Status')
+    fig: object = px.pie(df, values=' Test Count', names='Test Case Status')
     
     return fig
 
 # If provided figures are not empty, prepares a Dash App and launches it with the provided figures
-def LaunchDashApp(figs):
+def LaunchDashApp(figs: list[object]) -> None:
     if(len(figs) == 0):
         print("No figures generated during run time. Exiting application.")
         return

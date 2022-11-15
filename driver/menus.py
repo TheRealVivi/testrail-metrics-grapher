@@ -7,19 +7,20 @@ Created on Nov 4, 2022
 # Console UI to provide login credentials for TestRail
 def Login() -> str:
     import getpass
+
     print("Please login to TestRail:")
-    domain:str = input("TestRail domain: ")
-    email:str = input("TestRail email: ")
-    password:str = getpass.getpass("TestRail password: ")
+    domain: str = input("TestRail domain: ")
+    email: str = input("TestRail email: ")
+    password: str = getpass.getpass("TestRail password: ")
 
     return (domain, email, password)
 
 # Console UI for main menu
-def MainMenu(runningOS:str, domain:str, email:str, password:str):
-    toolActive:bool = True
-    consolidatedMetricsPulledRecently = [False, False, False]
+def MainMenu(runningOS: str, domain: str, email: str, password: str) -> list[object]:
+    toolActive: bool = True
+    consolidatedMetricsPulledRecently: list[bool] = [False, False, False, False]
 
-    jarArgs = ["java", "-jar", "../vMetrics.jar", runningOS, "", domain, email, password]
+    jarArgs: list[str] = ["java", "-jar", "../vMetrics.jar", runningOS, "", domain, email, password]
 
     figs = []
     while toolActive:
@@ -28,14 +29,14 @@ def MainMenu(runningOS:str, domain:str, email:str, password:str):
     return figs
 
 # Main menu options for user to select from
-def MainMenuOptions(jarArgs, figs, toolActive:bool, consolidatedMetricsPulledRecently):
+def MainMenuOptions(jarArgs: list[str], figs: list[object], toolActive: bool, consolidatedMetricsPulledRecently: list[bool]):
     import subprocess
 
-    CONSOLIDATED_SUITE_METRICS = '1'
-    SECTION_SUITE_METRICS = '2'
-    CONSOLIDATE_RUN_METRICS = '3'
-    QUIT_PROGRAM = '4'
-    OPTION = 4
+    CONSOLIDATED_SUITE_METRICS: str = '1'
+    SECTION_SUITE_METRICS: str = '2'
+    CONSOLIDATE_RUN_METRICS: str = '3'
+    QUIT_PROGRAM: str = '4'
+    OPTION: int = 4
     
     jarArgs[OPTION] = input("\nWelcome to the TestRail Metrics Generator Tool!\n"
                      + "Please select an option:\n"
@@ -66,18 +67,21 @@ def MainMenuOptions(jarArgs, figs, toolActive:bool, consolidatedMetricsPulledRec
     return (figs, toolActive, consolidatedMetricsPulledRecently)
 
 # User options for type of desired graph
-def ConsolidatedMetricsGraphOptionsMenu():
+def ConsolidatedMetricsGraphOptionsMenu() -> object:
     from testRailMetricsGraphingTool import PieGraphConsolidatedMetrics
     from testRailMetricsGraphingTool import BarGraphConsolidatedMetrics
 
-    option:str = input("\nSelect chart type to plot metrics:\n"
+    PIE_CHART: str = '1'
+    BAR_CHART: str = '2'
+
+    option: str = input("\nSelect chart type to plot metrics:\n"
                  + "1. Pie chart\n"
                  + "2. Bar graph\n"
                  + "Input option >> ")
     
-    if option == '1':
+    if option == PIE_CHART:
         fig = PieGraphConsolidatedMetrics()
-    elif option == '2':
+    elif option == BAR_CHART:
         fig = BarGraphConsolidatedMetrics()
     else:
         print("No valid option selected; defaulting to pie chart")
