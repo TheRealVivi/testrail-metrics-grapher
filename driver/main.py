@@ -5,7 +5,7 @@ Created on Nov 4, 2022
 '''
 
 from menus import MainMenu, Login
-from testRailMetricsGraphingTool import LaunchDashApp
+from testRailMetricsGraphingTool import LaunchDashApp, TestAPI
 import platform
 
 if __name__ == '__main__':
@@ -13,4 +13,3 @@ if __name__ == '__main__':
     (domain, email, password) = Login()
     figs: list[object] = MainMenu(runningOS, domain, email, password)
     LaunchDashApp(figs)
-    

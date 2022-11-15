@@ -20,7 +20,7 @@ def MainMenu(runningOS: str, domain: str, email: str, password: str) -> list[obj
     toolActive: bool = True
     consolidatedMetricsPulledRecently: list[bool] = [False, False, False, False]
 
-    jarArgs: list[str] = ["java", "-jar", "../vMetrics.jar", runningOS, "", domain, email, password]
+    jarArgs: list[str] = ["java", "-jar", "../vMetrics.jar", runningOS, "<option placeholder>", domain, email, password, "<suite or run ID placeholder>"]
 
     figs = []
     while toolActive:
@@ -36,7 +36,9 @@ def MainMenuOptions(jarArgs: list[str], figs: list[object], toolActive: bool, co
     SECTION_SUITE_METRICS: str = '2'
     CONSOLIDATE_RUN_METRICS: str = '3'
     QUIT_PROGRAM: str = '4'
+
     OPTION: int = 4
+    SUITE_RUN_ID: int = 8
     
     jarArgs[OPTION] = input("\nWelcome to the TestRail Metrics Generator Tool!\n"
                      + "Please select an option:\n"
@@ -47,7 +49,13 @@ def MainMenuOptions(jarArgs: list[str], figs: list[object], toolActive: bool, co
                      + "Input option (1-4) >> ")
         
     if jarArgs[OPTION] == CONSOLIDATED_SUITE_METRICS:
+        if consolidatedMetricsPulledRecently[int(CONSOLIDATED_SUITE_METRICS)]:
+            resume: str = input("Would you like to pull a different suite? (yes/no): ")
+            if resume == 'yes':
+                consolidatedMetricsPulledRecently[int(CONSOLIDATED_SUITE_METRICS)] = False
+
         if not consolidatedMetricsPulledRecently[int(CONSOLIDATED_SUITE_METRICS)]:
+            jarArgs[SUITE_RUN_ID] = input("Provide suite ID: ")
             subprocess.run(jarArgs)
             consolidatedMetricsPulledRecently[int(CONSOLIDATED_SUITE_METRICS)] = True
             
