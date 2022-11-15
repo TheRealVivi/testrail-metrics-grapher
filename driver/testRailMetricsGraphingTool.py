@@ -8,7 +8,7 @@ import pandas as pd
 
 # Returns bar chart based on provided csv
 def BarGraphConsolidatedMetrics() -> object:
-    df = pd.read_csv('../../../Documents/consolidatedMetrics.csv')
+    df: type[pd.DataFrame] = pd.read_csv('../../../Documents/consolidatedMetrics.csv')
     df = df.drop(labels=[7], axis=0,)
     fig: object = px.bar(df, x='Test Case Status', y=' Test Count')
     
@@ -16,7 +16,7 @@ def BarGraphConsolidatedMetrics() -> object:
 
 # Returns pie chart based on provided csv
 def PieGraphConsolidatedMetrics() -> object:
-    df = pd.read_csv('../../../Documents/consolidatedMetrics.csv')
+    df: type[pd.DataFrame] = pd.read_csv('../../../Documents/consolidatedMetrics.csv')
     df = df.drop(labels=[7], axis=0,)
     fig: object = px.pie(df, values=' Test Count', names='Test Case Status')
     
