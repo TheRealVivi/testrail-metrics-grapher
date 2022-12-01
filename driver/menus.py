@@ -41,10 +41,10 @@ def MainMenuOptions(jarArgs: list[str], figs: list[object], toolActive: bool, co
     jarArgs[OPTION] = input("\nWelcome to the TestRail Metrics Generator Tool!\n"
                      + "Please select an option:\n"
                      + "1. Provide consolidated section metrics\n"
-                     + "2. Provide metrics per section\n"
-                     + "3. Provide test run metrics\n"
+                     #+ "2. Provide metrics per section\n"
+                     #+ "3. Provide test run metrics\n"
                      + "4. Quit\n"
-                     + "Input option (1-4) >> ")
+                     + "Input option (1 or 4) >> ")
         
     if jarArgs[OPTION] == CONSOLIDATED_SUITE_METRICS:
         if not consolidatedMetricsPulledRecently[int(CONSOLIDATED_SUITE_METRICS)]:
@@ -52,10 +52,10 @@ def MainMenuOptions(jarArgs: list[str], figs: list[object], toolActive: bool, co
             consolidatedMetricsPulledRecently[int(CONSOLIDATED_SUITE_METRICS)] = True
             
         figs.append(ConsolidatedMetricsGraphOptionsMenu())
-    elif jarArgs[OPTION] == SECTION_SUITE_METRICS:
-        subprocess.run(jarArgs)
-    elif jarArgs[OPTION] == CONSOLIDATE_RUN_METRICS:
-        subprocess.run(jarArgs)
+    #elif jarArgs[OPTION] == SECTION_SUITE_METRICS:
+        #subprocess.run(jarArgs)
+    #elif jarArgs[OPTION] == CONSOLIDATE_RUN_METRICS:
+        #subprocess.run(jarArgs)
     elif jarArgs[OPTION] == QUIT_PROGRAM:
         toolActive = False
         print("\nGoodbye\n")
